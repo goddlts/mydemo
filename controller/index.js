@@ -1,3 +1,3 @@
 exports.showIndex = (req, res) => {
-  console.log('showIndex');
+  res.render('index.html');
 };
