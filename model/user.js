@@ -1,5 +1,4 @@
 const db = require('./db-helper');
-const md5 = require('blueimp-md5');
 
 exports.getByEMail = (email, callback) => {
   db.query(
@@ -38,7 +37,6 @@ exports.getByNickname = (nickname, callback) => {
 };
 
 exports.signup = (user, callback) => {
-  user.password = md5(user.password);
   db.query(
     'insert into `users` set ?',
     user,
@@ -50,4 +48,5 @@ exports.signup = (user, callback) => {
       callback(null);
     }
   );
-}
+};
+

@@ -1,23 +1,37 @@
 const moment = require('moment');
 const User = require('../model/user');
+const md5 = require('blueimp-md5');
 
 exports.showSignin = (req, res) => {
   res.render('signin.html');
 };
 
 exports.handleSignin = (req, res) => {
-  const sql = 'insert into users set ?';
-  connection.query(sql, req.body, (err, results) => {
+  User.getByEMail(req.body.email, (err, user) => {
     if (err) {
       res.json({
         code: 500,
-        msg: '服务器内部错误'
+        msg: err.message
+      });
+      return;
+    }
+    if (!user) {
+      res.json({
+        code: 401,
+        msg: '您输入的邮箱不存在'
+      });
+      return;
+    }
+    if (user.password !== md5(req.body.password)) {
+      res.json({
+        code: 401,
+        msg: '输入的密码不正确'
       });
       return;
     }
     res.json({
       code: 200,
-      msg: '注册成功'
+      msg: '登录成功'
     });
   });
 };
@@ -60,6 +74,7 @@ exports.handleSignup = (req, res) => {
       }
 
       req.body.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+      req.body.password = md5(req.body.password);
       User.signup(req.body, (err) => {
         if (err) {
           res.json({
