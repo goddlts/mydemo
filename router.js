@@ -11,6 +11,7 @@ const categoryCtrl = require('./controller/category');
 const router = express.Router();
 // 2 配置路由规则
 
+
 // 配置首页的 处理函数模块
 router
   .get('/', indexCtrl.showIndex);
