@@ -38,7 +38,7 @@ exports.getByNickname = (nickname, callback) => {
 
 exports.signup = (user, callback) => {
   db.query(
-    'insert into `users` set ?',
+    'ins into `users` set ?',
     user,
     (err, results) => {
       if (err) {

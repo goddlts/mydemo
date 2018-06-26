@@ -44,5 +44,21 @@ app.use('/public', express.static('./public'));
 app.use('/node_modules', express.static('./node_modules'));
 
 
+
 // 4 app.js中使用app.use 挂载路由对象
 app.use(router);
+
+app.use((req, res, next) => {
+  // 统一处理404的错误
+  res.send('没找到');
+});
+
+app.use((err, req, res, next) => {
+  if (err) {
+    res.json({
+      code: 500,
+      msg: err.message
+    });
+  }
+});
+

@@ -8,13 +8,13 @@ exports.showSignin = (req, res) => {
 
 exports.handleSignin = (req, res) => {
   User.getByEMail(req.body.email, (err, user) => {
-    if (err) {
-      res.json({
-        code: 500,
-        msg: err.message
-      });
-      return;
-    }
+    // if (err) {
+    //   res.json({
+    //     code: 500,
+    //     msg: err.message
+    //   });
+    //   return;
+    // }
     if (!user) {
       res.json({
         code: 401,
@@ -44,15 +44,15 @@ exports.showSignup = (req, res) => {
   res.render('signup.html');
 };
 
-exports.handleSignup = (req, res) => {
+exports.handleSignup = (req, res, next) => {
   User.getByEMail(req.body.email, (err, user) => {
-    if (err) {
-      res.json({
-        code: 500,
-        msg: err.message
-      });
-      return;
-    }
+    // if (err) {
+    //   res.json({
+    //     code: 500,
+    //     msg: err.message
+    //   });
+    //   return;
+    // }
     if (user) {
       res.json({
         code: 401,
@@ -62,13 +62,13 @@ exports.handleSignup = (req, res) => {
     }
 
     User.getByNickname(req.body.nickname, (err, user) => {
-      if (err) {
-        res.json({
-          code: 500,
-          msg: err.message
-        });
-        return;
-      }
+      // if (err) {
+      //   res.json({
+      //     code: 500,
+      //     msg: err.message
+      //   });
+      //   return;
+      // }
       if (user) {
         res.json({
           code: 401,
@@ -81,10 +81,8 @@ exports.handleSignup = (req, res) => {
       req.body.password = md5(req.body.password);
       User.signup(req.body, (err) => {
         if (err) {
-          res.json({
-            code: 500,
-            msg: err.message
-          });
+          // throw err;
+          next(err);
           return;
         }
         res.json({
