@@ -22,6 +22,7 @@ exports.handleSignin = (req, res) => {
       });
       return;
     }
+
     if (user.password !== md5(req.body.password)) {
       res.json({
         code: 401,
@@ -29,6 +30,9 @@ exports.handleSignin = (req, res) => {
       });
       return;
     }
+
+    req.session.user = user;
+
     res.json({
       code: 200,
       msg: '登录成功'

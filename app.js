@@ -2,11 +2,18 @@ const express = require('express');
 const router = require('./router');
 const expressArtTemplate = require('express-art-template');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 app.listen(3000, () => {
   console.log('开启端口 3000');
 });
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
