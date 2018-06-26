@@ -3,16 +3,33 @@ const router = require('./router');
 const expressArtTemplate = require('express-art-template');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 
 const app = express();
 app.listen(3000, () => {
   console.log('开启端口 3000');
 });
 
+// 配置session持久化
+const options = {
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: 'root',
+  database: 'ithub'
+};
+const sessionStore = new MySQLStore(options);
+
+// 配置session
 app.use(session({
+  key: 'abc',
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
+  resave: true,
+  store: sessionStore,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000
+  }
 }));
 
 // parse application/x-www-form-urlencoded

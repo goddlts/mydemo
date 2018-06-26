@@ -1,5 +1,16 @@
+const Category = require('../model/category');
+const Topic = require('../model/topic');
+
 exports.showCreate = (req, res) => {
-  res.send('showCreate');
+  Category.getAll((err, categories) => {
+    if (err) {
+      res.send('服务器内部错误');
+      return;
+    }
+    res.render('topic/create.html', {
+      categories
+    });
+  });
 };
 
 exports.handleCreate = (req, res) => {

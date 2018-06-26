@@ -97,4 +97,11 @@ exports.handleSignup = (req, res) => {
 };
 
 exports.handleSignout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.send('服务器错误');
+      return;
+    }
+    res.redirect('/signin');
+  });
 };
