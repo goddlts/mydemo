@@ -49,8 +49,6 @@ app.engine('html', expressArtTemplate);
 app.use('/public', express.static('./public'));
 app.use('/node_modules', express.static('./node_modules'));
 
-
-
 // 4 app.js中使用app.use 挂载路由对象
 app.use(router);
 

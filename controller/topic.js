@@ -58,6 +58,16 @@ exports.hanldeEdit = (req, res) => {
 
 };
 
-exports.hanldeDelete = (req, res) => {
+exports.hanldeDelete = (req, res, next) => {
+  const { topicID } = req.params;
 
+  Topic.delete(topicID, (err, results) => {
+    if (err) {
+      return next(err);
+    }
+    res.json({
+      code: 200,
+      msg: '删除成功'
+    })
+  });
 };

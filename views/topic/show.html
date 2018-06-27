@@ -22,8 +22,8 @@
             <h1>{{ topic.title }}</h1>
             {{ if topic.userId === user.id }}
               <p>
-                <a href="/topic/edit/{{ topic.id }}">编辑</a>
-                <a href="/topic/delete/{{ topic.id }}">删除</a>
+                <a href="/topic/{{ topic.id }}/edit">编辑</a>
+                <a href="/topic/{{ topic.id }}/delete" id="btnDelete">删除</a>
               </p>
             {{ /if }}
             <p>
@@ -113,6 +113,24 @@
   {{include '../_includes/footer.html'}}
   <script src="/node_modules/jquery/dist/jquery.js"></script>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+  <script>
+    $('#btnDelete').on('click', function (e) {
+      e.preventDefault();
+      if (!confirm('确认删除？')) {
+        return;
+      }
+
+      var path = $(this).attr('href');
+      $.get(path, function (data) {
+        if (data.code === 200) {
+          location.href = '/';
+        } else {
+          alert(data.msg);
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

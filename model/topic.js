@@ -41,4 +41,17 @@ exports.getById = (id, callback) => {
       }
     }
   );
+};
+
+exports.delete = (id, callback) => {
+  db.query(
+    'delete from `topics` where `id`=?',
+    id,
+    (err, results) => {
+      if (err) {
+        return callback(err);
+      }
+      callback(null, results);
+    }
+  );
 }
