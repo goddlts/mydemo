@@ -17,85 +17,90 @@
   <section class="container">
   <div class="row">
     <div class="col-md-9">
-      <article class="markdown-body">
-      <h1>{{ topic.title }}</h1>
-      <p>
-        {{ topic.content }}
-      </p>
-    </article>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>itcast</span> commented 
-          <span>24 minutes ago</span>
-          <span class="action">
-            <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
-            <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
-          </span>
-        </div>
-        <div class="panel-body">
-          评论测试
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>itcast</span> commented 
-          <span>24 minutes ago</span>
-          <span class="action">
-            <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
-            <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
-          </span>
-        </div>
-        <div class="panel-body">
-          评论测试
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>itcast</span> commented 
-          <span>24 minutes ago</span>
-          <span class="action">
-            <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
-            <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
-          </span>
-        </div>
-        <div class="panel-body">
-          评论测试
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>itcast</span> commented 
-          <span>24 minutes ago</span>
-          <span class="action">
-            <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
-            <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
-          </span>
-        </div>
-        <div class="panel-body">
-          评论测试
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>itcast</span> commented 
-          <span>24 minutes ago</span>
-          <span class="action">
-            <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
-            <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
-          </span>
-        </div>
-        <div class="panel-body">
-          评论测试
-        </div>
-      </div>
-      <hr>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputPassword1">添加回复</label>
-          <textarea class="form-control" name="" id="" cols="10" rows="10"></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">回复</button>
-      </form>
+        {{ if topic }}
+          <article class="markdown-body">
+            <h1>{{ topic.title }}</h1>
+            <p>
+              {{ topic.content }}
+            </p>
+          </article>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>itcast</span> commented 
+              <span>24 minutes ago</span>
+              <span class="action">
+                <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
+                <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
+              </span>
+            </div>
+            <div class="panel-body">
+              评论测试
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>itcast</span> commented 
+              <span>24 minutes ago</span>
+              <span class="action">
+                <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
+                <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
+              </span>
+            </div>
+            <div class="panel-body">
+              评论测试
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>itcast</span> commented 
+              <span>24 minutes ago</span>
+              <span class="action">
+                <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
+                <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
+              </span>
+            </div>
+            <div class="panel-body">
+              评论测试
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>itcast</span> commented 
+              <span>24 minutes ago</span>
+              <span class="action">
+                <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
+                <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
+              </span>
+            </div>
+            <div class="panel-body">
+              评论测试
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>itcast</span> commented 
+              <span>24 minutes ago</span>
+              <span class="action">
+                <a href=""><i class="glyphicon glyphicon-thumbs-up pull-right"></i></a>
+                <a href=""><i class="glyphicon glyphicon-remove-circle pull-right"></i></a>
+              </span>
+            </div>
+            <div class="panel-body">
+              评论测试
+            </div>
+          </div>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label for="exampleInputPassword1">添加回复</label>
+              <textarea class="form-control" name="" id="" cols="10" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">回复</button>
+          </form>
+        {{ else }}
+          <p>没有该话题</p>
+          <a class="btn btn-success" href="/">返回</a>
+        {{ /if }}
     </div>
   </div>
 </section>

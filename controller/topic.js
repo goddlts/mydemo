@@ -9,7 +9,8 @@ exports.showCreate = (req, res) => {
       return;
     }
     res.render('topic/create.html', {
-      categories
+      categories,
+      user: req.session.user,
     });
   });
 };
@@ -43,7 +44,8 @@ exports.show = (req, res, next) => {
       return next(err);
     }
     res.render('topic/show.html', {
-      topic: topic
+      topic: topic,
+      user: req.session.user,
     });
   });
 };
