@@ -33,8 +33,19 @@ exports.handleCreate = (req, res) => {
   });
 };
 
-exports.show = (req, res) => {
-
+exports.show = (req, res, next) => {
+  // console.log(req.query);
+  // console.log(req.params);
+  // const { id } = req.query;
+  const { id } = req.params;
+  Topic.getById(id, (err, topic) => {
+    if (err) {
+      return next(err);
+    }
+    res.render('topic/show.html', {
+      topic: topic
+    });
+  });
 };
 
 exports.showEdit = (req, res) => {

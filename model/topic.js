@@ -25,3 +25,20 @@ exports.findAll = (callback) => {
     }
   );
 };
+
+exports.getById = (id, callback) => {
+  db.query(
+    'select * from `topics` where `id`=?',
+    id,
+    (err, results) => {
+      if (err) {
+        return callback(err);
+      }
+      if (results.length > 0) {
+        callback(null, results[0]);
+      } else {
+        callback(null, null);
+      }
+    }
+  );
+}

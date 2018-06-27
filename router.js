@@ -27,7 +27,8 @@ router
 router
   .get('/topic/create', topicCtrl.showCreate)
   .post('/topic/create', topicCtrl.handleCreate)
-  .get('/topic/:topicID', topicCtrl.show)
+  .get('/topic/show', topicCtrl.show)
+  .get('/topic/:id', topicCtrl.show)
   .get('/topic/:topicID/edit', topicCtrl.showEdit)
   .post('/topic/:topicID/edit', topicCtrl.hanldeEdit)
   .get('/topic/:topicID/delete', topicCtrl.hanldeDelete)

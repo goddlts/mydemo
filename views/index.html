@@ -18,7 +18,10 @@
           </a>
       </div>
       <div class="media-body">
-        <h4 class="media-heading"><a href="/topics/123">{{ $value.title }}</a></h4>
+        <h4 class="media-heading">
+          <!-- <a href="/topic/show?id={{ $value.id }}">{{ $value.title }}</a> -->
+          <a href="/topic/{{ $value.id }}">{{ $value.title }}</a>
+        </h4>
         <p>sueysok 回复了问题 • 2 人关注 • 1 个回复 • 187 次浏览 • {{ moment($value.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}</p>
       </div>
     </li>
