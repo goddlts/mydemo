@@ -13,3 +13,15 @@ exports.create = (topic, callback) => {
     }
   );
 };
+
+exports.findAll = (callback) => {
+  db.query(
+    'select * from `topics` order by `createdAt` desc',
+    (err, results) => {
+      if (err) {
+        return callback(err);
+      }
+      callback(null, results);
+    }
+  );
+};
