@@ -32,6 +32,12 @@ app.use(session({
   }
 }));
 
+// app.locals中的成员可以在页面上直接使用
+app.use((req, res, next) => {
+  app.locals.user = req.session.user;
+  next();
+});
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json

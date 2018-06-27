@@ -9,8 +9,8 @@ exports.showCreate = (req, res) => {
       return;
     }
     res.render('topic/create.html', {
-      categories,
-      user: req.session.user,
+      categories
+      // user: req.session.user,
     });
   });
 };
@@ -44,8 +44,8 @@ exports.show = (req, res, next) => {
       return next(err);
     }
     res.render('topic/show.html', {
-      topic: topic,
-      user: req.session.user
+      topic: topic
+      // user: req.session.user
     });
   });
 };

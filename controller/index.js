@@ -6,7 +6,7 @@ exports.showIndex = (req, res, next) => {
       return next(err);
     }
     res.render('index.html', {
-      user: req.session.user,
+      // user: req.session.user,
       topics,
       moment
     });
