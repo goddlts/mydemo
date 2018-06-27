@@ -45,7 +45,7 @@ exports.show = (req, res, next) => {
     }
     res.render('topic/show.html', {
       topic: topic,
-      user: req.session.user,
+      user: req.session.user
     });
   });
 };

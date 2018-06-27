@@ -20,6 +20,12 @@
         {{ if topic }}
           <article class="markdown-body">
             <h1>{{ topic.title }}</h1>
+            {{ if topic.userId === user.id }}
+              <p>
+                <a href="/topic/edit/{{ topic.id }}">编辑</a>
+                <a href="/topic/delete/{{ topic.id }}">删除</a>
+              </p>
+            {{ /if }}
             <p>
               {{ topic.content }}
             </p>
